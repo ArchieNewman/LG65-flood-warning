@@ -4,7 +4,7 @@
 
 from floodsystem.stationdata import build_station_list
 
-print("Archie was here")
+print("Archie was here twice")
 
 def run():
     """Requirements for Task 1A"""
