@@ -79,7 +79,7 @@ def rivers_with_stations(stations):
 #part 2- developing a function that returns a dictionary that maps river names to station objects on a given river
 
 def stations_by_river(stations):
-    #dictionary mapping river names stations on a given river
+    #dictionary mapping river names to stations on a given river
 
     river_stations = {} #creates empty dictionary
 
