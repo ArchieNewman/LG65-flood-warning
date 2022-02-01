@@ -4,6 +4,7 @@
 """This module contains a collection of functions related to
 geographical data. You must have the "haversine" and "utils" modules installed to run this module"""
 
+from pickle import APPEND
 from .utils import sorted_by_key  # noqa
 
 # Task 1B:
@@ -64,6 +65,8 @@ def stations_within_radius(stations, centre, r):
 
 
 #Task 1D:
+#part 1- developing a function to return a set of rivers with monitoring stations
+
 def rivers_with_stations(stations):
     #creates a list of rivers with monitoring stations- without duplicates
    
@@ -72,3 +75,30 @@ def rivers_with_stations(stations):
         rivers.add(station.river) #adds the river name to the station object in the set
     
     return rivers #returns the set
+
+#part 2- developing a function that returns a dictionary that maps river names to station objects on a given river
+
+def stations_by_river(stations):
+    #dictionary mapping river names stations on a given river
+
+    river_stations = {} #creates empty dictionary
+
+    for station in stations #goes through each station in stations list
+        
+        if station.river in river_stations: #checks to see if there is a key for the river already
+            river_stations[station.river].append(station) #append = adds station to dictionary as an object- key is the river name
+
+        else: 
+            station.setdefault(station.river, []) #creates a new river key
+            river_stations[station.river].append(station) #append adds the station to the key for that river 
+
+    return river_stations #returns the dictionary 
+            
+
+
+
+
+
+
+
+
