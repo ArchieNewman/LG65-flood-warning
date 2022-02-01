@@ -64,4 +64,11 @@ def stations_within_radius(stations, centre, r):
 
 
 #Task 1D:
-#this is a practice commit :)
+def rivers_with_stations(stations):
+    #creates a list of rivers with monitoring stations- without duplicates
+   
+    rivers = set() #creates an empty set for the list- using a set to avoid duplicates
+    for station in stations: #applys function to every station
+        rivers.add(station.river) #adds the river name to the station object in the set
+    
+    return rivers #returns the set
