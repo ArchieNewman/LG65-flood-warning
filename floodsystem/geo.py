@@ -83,7 +83,7 @@ def stations_by_river(stations):
 
     river_stations = {} #creates empty dictionary
 
-    for station in stations #goes through each station in stations list
+    for station in stations: #goes through each station in stations list
         
         if station.river in river_stations: #checks to see if there is a key for the river already
             river_stations[station.river].append(station) #append = adds station to dictionary as an object- key is the river name
