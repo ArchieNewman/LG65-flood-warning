@@ -6,7 +6,8 @@ from floodsystem.geo import stations_by_river
 
 #task 1D demo program
 def run():
-    #part one
+    #part one- making part of the function that prints the number of rivers with stations and shows a list of the first 10 
+    #alphabetically sorted rivers with stations
     stations = build_station_list # builds a list  of stations
 
     rivers_ws = rivers_with_stations(stations) #creates a list of stations with one or more monitoring stations
@@ -15,6 +16,27 @@ def run():
     print(len(rivers_ws), "stations.") #prints the number of rivers with one or more monitoring stations- in the form "xxx stations."
     print("The First 10-", sorted_rivers_ws[:10]) #prints the first 10 rivers with stations in alphabetical order
 
+    #part 2- making part of the function that prints the names of the stations located on specific rivers
+
+    river_stations = stations_by_river(stations) #builds a dictionary of rivers with their stations
+
+    station_names_RiverAire = [] #makes an empty list to add the stations on the river aire
+    for station in river_stations['River Aire']: #cycles through the list of stations on the river aire
+        station_names_RiverAire.append(station.name) #adds the station name to the river specific list
+
+    station_names_RiverCam = [] #repeat for river cam
+    for station in river_stations['River Cam']:
+        station_names_RiverCam.append(station.name)
+
+    station_names_RiverThames = [] #repeat for river Thames
+    for station in river_stations['River Thames']:
+        station_names_RiverThames.append(station.name)
+
+    print(sorted(station_names_RiverAire)) #sorts and prints the station names on each river
+    print(sorted(station_names_RiverCam))
+    print(sorted(station_names_RiverThames))
 
 
-    #part 2
+if __name__ == "__main__":
+    print ("******** Task 1D: CUED Part IA Flood Warning System ********")
+    run()
