@@ -8,13 +8,15 @@ from floodsystem.geo import stations_by_river
 def run():
     #part one- making part of the function that prints the number of rivers with stations and shows a list of the first 10 
     #alphabetically sorted rivers with stations
-    stations = build_station_list # builds a list  of stations
+    stations = build_station_list() # builds a list  of stations        #Added () after build_station_list
 
     rivers_ws = rivers_with_stations(stations) #creates a list of stations with one or more monitoring stations
     sorted_rivers_ws = sorted(rivers_ws) #sorts the list into alphabetical order
 
     print(len(rivers_ws), "stations.") #prints the number of rivers with one or more monitoring stations- in the form "xxx stations."
     print("The First 10-", sorted_rivers_ws[:10]) #prints the first 10 rivers with stations in alphabetical order
+    #Part 1 works now, the only problem was the missed ()
+
 
     #part 2- making part of the function that prints the names of the stations located on specific rivers
 
