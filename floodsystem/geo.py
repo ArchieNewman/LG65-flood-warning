@@ -94,3 +94,37 @@ def stations_by_river(stations):
 
     return river_stations #returns the dictionary 
             
+
+#Task 1E:
+#developing a function that returns a list of the N rivers with the most monitoring stations
+
+def rivers_by_station_number(stations, N):
+    #determines the N rivers with most monitoring stations
+
+    river_stations = stations_by_river(stations) #creates a dictionary using function (from 1D) of rivers with station names
+
+    river_stationfreq = [] #creates an empty list for rivers and number of stations
+
+    for river in river_stations: #cycles through each of the river keys in the dictionary...
+        river_stationfreq.append((river, len(river_stations[river]))) #adds the river name and the number of stations for the given river to the list
+
+        #sorting function for the tuples, sorts based on number of stations (descending order)
+        def sort_by_second(tup): 
+            return tup[1] #picks out the number of stations Note-!!! python counts from zero so [0] is river name and [1] is the number of stations
+
+    river_stationfreq.sort(key = sort_by_second, reverse=True) #sorts the list of rivers and number of stations by the second part of the tuple (number of stations), in descending order
+
+    #incase the Nth river has the same number of monitoring stations as rivers further down the list.
+    while True:
+        if   river_stationfreq[N-1][1] == river_stationfreq[N][1]:  #checks to see if more rivers have same number of stations as Nth
+
+            N += 1 #adds increment so that it includes the river with the same value
+
+        else:
+            break #breaks the loop as no other rivers have an equal number of stations
+
+
+    return river_stationfreq[:N] #returns ordered list up to N entries 
+
+
+
