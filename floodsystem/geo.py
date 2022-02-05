@@ -75,6 +75,7 @@ def rivers_with_stations(stations):
         rivers.add(station.river) #adds the river name to the station object in the set
     
     return rivers #returns the set
+    #this part works
 
 #part 2- developing a function that returns a dictionary that maps river names to station objects on a given river
 
