@@ -90,12 +90,8 @@ def stations_by_river(stations):
             river_stations[station.river].append(station) #append = adds station to dictionary as an object- key is the river name
 
         else: 
-            station.setdefault(station.river, []) #creates a new river key
-            # The problem here is the above line:
-            # AttributeError: 'MonitoringStation' object has no attribute 'setdefault'
-            # I am not sure what setdefault does? But it seems to be what's causing all the problems
-
-            river_stations[station.river].append(station) #append adds the station to the key for that river
+            river_stations.setdefault(station.river, []) #creates a new river key- correction: had list.setdefault needed dictionary.setdefault
+            river_stations[station.river].append(station) #append adds the station to the key for that river 
 
     return river_stations #returns the dictionary 
             
