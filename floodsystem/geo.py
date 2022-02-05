@@ -89,7 +89,7 @@ def stations_by_river(stations):
             river_stations[station.river].append(station) #append = adds station to dictionary as an object- key is the river name
 
         else: 
-            station.setdefault(station.river, []) #creates a new river key
+            river_stations.setdefault(station.river, []) #creates a new river key- correction: had list.setdefault needed dictionary.setdefault
             river_stations[station.river].append(station) #append adds the station to the key for that river 
 
     return river_stations #returns the dictionary 
