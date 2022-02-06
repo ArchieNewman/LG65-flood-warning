@@ -7,6 +7,8 @@ geographical data. You must have the "haversine" and "utils" modules installed t
 from pickle import APPEND
 from .utils import sorted_by_key  # noqa
 
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Task 1B:
 def stations_by_distance(stations, p):
     """Calculates the distance (in km) of every station in a list of station objects from a Lat/Long coordinate specified by the user
@@ -34,7 +36,7 @@ def stations_by_distance(stations, p):
 
     return output_list
 
-
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Task 1C:
 def stations_within_radius(stations, centre, r):
@@ -63,6 +65,7 @@ def stations_within_radius(stations, centre, r):
 
     return name_list
 
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Task 1D:
 #part 1- developing a function to return a set of rivers with monitoring stations
@@ -95,6 +98,7 @@ def stations_by_river(stations):
 
     return river_stations #returns the dictionary 
             
+#----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Task 1E:
 #developing a function that returns a list of the N rivers with the most monitoring stations
