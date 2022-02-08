@@ -46,17 +46,5 @@ def test_stations_by_river():
  
 
  #Tests for 1E
-
-def test_rivers_by_station_number():
-
-     stations = build_station_list #build station list
-     N = 200
-
-     NRivers = rivers_by_station_number(stations, N) 
-     assert type(NRivers) == list #Check that a list is made.
-     assert len(NRivers) >= N #Checks that the length of the list is consistent (>= N). 
-
-     for item in NRivers:
-        assert type(item) == tuple #checks the items in the list are tuples
-        assert type(item[0]) == str #checks that the first value in the touple is a string (river name)
-        assert type(item[1]) == int #checks second value is the number of stations
+Station_Test_E = build_station_list()
+print(rivers_by_station_number(Station_Test_E, 2))
