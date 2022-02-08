@@ -1,4 +1,4 @@
-#test for task 1D
+#importing relevant modules
 
 from floodsystem.geo import rivers_with_stations
 from floodsystem.geo import stations_by_river
@@ -7,6 +7,7 @@ from floodsystem.station import MonitoringStation
 from floodsystem.stationdata import  build_station_list
 import inspect
 
+#tests for 1D
 
 def test_rivers_with_station():
 
@@ -43,3 +44,20 @@ def test_stations_by_river():
 
     assert len(river_stations_dict) == len(rivers_with_stations(stations)) #checks that the number of rivers in both the list and dictionary is the same (no duplicates or ones missing)
  
+
+ #Tests for 1E
+
+def test_rivers_by_station_number():
+
+     stations = build_station_list #build station list
+     N = 200
+
+     NRivers = rivers_by_station_number(stations, N)
+     assert type(NRivers) == list #checks list is made
+     assert len(NRivers) >= N #checks length is consistent 
+
+     for item in NRivers:
+         assert type(item) == tuple #checks the items in the list are tuples
+         assert type(item[0]) == str #checks that the first value in the touple is a string (river name)
+         assert type(item[1]) == int #checks second value is the number of stations
+
