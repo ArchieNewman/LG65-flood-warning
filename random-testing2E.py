@@ -6,14 +6,13 @@ import datetime
 all_stations = build_station_list()
 
 
-# need to find which stations have the current relative highest water level
-# this is part of task 2C - so I will use the function from 2C to get a list of 5 the station objects needed.
-from floodsystem.flood import stations_highest_rel_level
-risky_stations = stations_highest_rel_level(all_stations, 5)
+# This creates a list of the first 5 stations in all_stations (so I can test without 2c)
+risky_stations = []
+for i in range(5):
+    risky_stations.append(all_stations[i])
 
 
-
-# Uses fetch_water_levels to get the dates, levels for the risky_stations for the past 10 days
+# Uses fetch_water_levels to get the dates, levels for the risky_stations for the past 10 days (same code as from actual 2E)
 for i in range(len(risky_stations)):
     new_name = risky_stations[i].measure_id
     dates, levels = fetch_measure_levels(new_name, datetime.timedelta(days=10))

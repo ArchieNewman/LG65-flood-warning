@@ -1,16 +1,19 @@
+# Imports
 from floodsystem.plot import plot_water_levels
-from floodsystem.stationdata import build_station_list
-all_stations = build_station_list()
+from floodsystem.datafetcher import fetch_measure_levels
+import datetime
+from floodsystem.station import MonitoringStation
 
-# Does the function for the first 5 stations in the list of stations, instead of for the "at risk" stations that
-# are identified by the program from 1C in the actual task2E file.
+fictional_station = MonitoringStation("station_id", "measure_id", "fake station", "coord", [0, 10], "made up river", "New Madeupville")
 
-print("5 graphs will now open. Please check they all look normal.")
+dates = []
+for i in range(11):
+    date = datetime.date(2022, 1, i+1)
+    print(date)
+    dates.append(date)
 
-for i in range(5):
-    station = all_stations[i]
-    output = plot_water_levels(station, 10)
+levels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+plot_water_levels(fictional_station, dates, levels)
 
-
-
+print("Check that this forms a Z shape, that all three lines are plotted, and that the graph has a legend and title")

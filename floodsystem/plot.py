@@ -1,30 +1,14 @@
-"""This module contains a function that allows you to plot water level against time for a station of your choice.
-You must have matplotlib and datetime installed to use this module. Dates = how many days back you want to go."""
+"""Described below."""
 
-def plot_water_levels(station, dates):
+def plot_water_levels(station, dates, levels):
+    """When given a station object, a set of dates and a set of levels, plots a graph of level vs time with the typical
+    high/low levels as well."""
     # Imports necessary stuff
     import matplotlib.pyplot as plt
     import datetime
-    from floodsystem.datafetcher import fetch_measure_levels
-
-    # gets the id needed to use fetch_measure_levels
-    new_name = station.measure_id
-
-    #uses fetch_measure_levels to get the levels for the desired dates
-    t, l = fetch_measure_levels(new_name, datetime.timedelta(days=dates))
-
-    #Creates the lists for the x and y axes
-    times = []
-    levels = []
-
-    # I thought that I was getting a weird format and spent ages trying to fix it, but it looks like it works
-    # And that the weird time format was just Python's special way of handling dates
-    for time, level in zip(t, l):           #copied from Task 2D, I don't really know what it does but I got it working
-        times.append(time)
-        levels.append(level)
 
     # Plots the levels and times found above
-    plt.plot(times, levels, label="Actual level")
+    plt.plot(dates, levels, label="Actual level")
 
     # Gets typical highs and lows
     tr = station.typical_range
@@ -33,16 +17,17 @@ def plot_water_levels(station, dates):
 
     # turns them into a list with correct length
     low_list = []
-    for i in range(len(times)):
+    for i in range(len(dates)):
         low_list.append(tr_low)
 
     high_list = []
-    for i in range(len(times)):
+    for i in range(len(dates)):
         high_list.append(tr_high)
 
     #... and plots them
-    plt.plot(times, low_list, label="Typical low level")
-    plt.plot(times, high_list, label="Typical high level")
+    plt.plot(dates, low_list, label="Typical low level")
+    plt.plot(dates, high_list, label="Typical high level")
+
 
     # Add axis labels, rotate date labels and add plot title
     plt.xlabel('Date')
