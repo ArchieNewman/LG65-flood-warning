@@ -39,6 +39,25 @@ class MonitoringStation:
         d += "   typical range: {}".format(self.typical_range)
         return d
 
+#-------------------------------------------------------------------------------------------------------------------------------------------#
+   
+    # Task 2B (1)
+
+    def relative_water_level(self):
+        """Returns the latest water level as a fraction of the typical range"""
+
+        ratio = None #creates a variable for the ratio of water level to typical range
+        
+        if self.typical_range != None: #only runs if data available for typical range
+            if self.latest_level != None: #only runs if data available for latest level
+                ratio = (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
+                #calculates ratio of the position of the latest river level compared to typical values
+
+        return ratio #returns the ratio calculated above
+
+#---------------------------------------------------------------------------------------------------------------------------------------#        
+
+
     # Task 1F, part 1:
     def typical_range_consistent(self):
         """A method that determines if an individual station's high/low range data is consistent (True) or not (False)"""
