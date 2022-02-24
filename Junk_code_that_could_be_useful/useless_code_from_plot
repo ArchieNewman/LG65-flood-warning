@@ -1,0 +1,42 @@
+"""This module contains a function that allows you to plot water level against time for a station of your choice.
+You must have matplotlib and datetime installed to use this module."""
+
+def plot_water_levels(station, dates):
+    # Imports stuff that I could need
+    import matplotlib.pyplot as plt
+    from floodsystem.datafetcher import fetch
+    
+    import datetime
+    import json
+    import os
+
+    import dateutil.parser
+    import requests
+
+    new_name = station.measure_id
+
+    #Copied from datafetcher, don't touch much!
+    # Current time (UTC)
+    now = datetime.datetime.utcnow()
+
+    # Construct URL for fetching data
+    url_base = new_name
+    url_options = "/readings/?_sorted&since=" + start.isoformat() + 'Z'
+    url = url_base + url_options
+
+    # Fetch data
+    data = fetch(url)
+
+    # Extract dates and levels
+    dates, levels = [], []
+    for measure in data['items']:
+        # Convert date-time string to a datetime object
+        d = dateutil.parser.parse(measure['dateTime'])
+
+        # Append data
+        dates.append(d)
+        levels.append(measure['value'])
+
+    return dates, levels
+
+
