@@ -15,3 +15,8 @@ def run():
 
     for tup in stations_over: #for every tuple in the list
         print(tup[0].name, tup[1]) #prints name of station and relative river level
+
+
+if __name__ == "__main__":
+    print("*** Task 2B: CUED Part IA Flood Warning Sysrem ***")
+    run()
