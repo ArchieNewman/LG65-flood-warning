@@ -1,3 +1,5 @@
+"""Tests the plotting function developed as part of 2E"""
+
 # Imports
 from floodsystem.plot import plot_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
