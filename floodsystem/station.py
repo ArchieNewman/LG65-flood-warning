@@ -50,7 +50,8 @@ class MonitoringStation:
         
         if self.typical_range != None: #only runs if data available for typical range
             if self.latest_level != None: #only runs if data available for latest level
-                ratio = (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
+                if self.typical_range[1] > self.typical_range[0]: #only runs if data is consistent
+                    ratio = (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
                 #calculates ratio of the position of the latest river level compared to typical values
 
         return ratio #returns the ratio calculated above
@@ -97,6 +98,7 @@ def inconsistent_typical_range_stations(stations):
     output_list.sort()
 
     return output_list
+
 
         
 
