@@ -4,6 +4,7 @@
 """Unit test for the station module"""
 
 from floodsystem.station import MonitoringStation
+from floodsystem.stationdata import build_station_list, update_water_levels
 
 
 def test_create_monitoring_station():
@@ -25,3 +26,37 @@ def test_create_monitoring_station():
     assert s.typical_range == trange
     assert s.river == river
     assert s.town == town
+
+
+    #------------------------------------------------------------------------------#
+
+    #test for 2B
+def test_relative_water_level():
+
+    stations = build_station_list () #builds a list of stations 
+    update_water_levels(stations) #updates to latest water levels
+
+    for station in stations:
+        if station.typical_range_consistent() == False:
+            assert station.relative_water_level() == None #this checks that inconsistent data returns None
+
+    s_id = "https://environment.data.gov.uk/flood-monitoring/id/stations/E8266" #creates a station (river ouse)
+    m_id = "https://environment.data.gov.uk/flood-monitoring/id/measures/E8266-level-stage-i-15_min-mASD" #assigns the measure id for river ouse
+    label = "Ardingly"
+    coord = (51.038451 ,-0.100268)
+    river = "River Ouse"
+    town = "Ardingly"
+    test_typical_range = (0, 10)
+    test_station_list = [MonitoringStation(s_id, m_id, label, coord, test_typical_range, river, town)] #turns it intoo a monitoring station in the class
+
+    update_water_levels(test_station_list)
+
+    known_latest_level = test_station_list[0].latest_level #updates the latest water level to the test station
+
+    test_station_list[0].typical_range = (0, known_latest_level) #sets the station's max in typical to the known latest level
+    assert test_station_list[0].relative_water_level() == 1 #runs the station through the relative water level function and checks that the ratio is 1
+    test_station_list[0].typical_range = (known_latest_level, 10) #sets the station's min typical to known latest level
+    assert test_station_list[0].relative_water_level() == 0 #runs station through function and checks ratio is 0
+    
+
+

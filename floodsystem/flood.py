@@ -10,7 +10,7 @@ def stations_level_over_threshold(stations, tol):
 
     for station in stations: #cycles through every station in the list of stations
         if station.relative_water_level() != None: #wont run if no data
-            if station.typical_range[1] > station.typical_range[0]: 
+            if station.typical_range[1] > station.typical_range[0]: #only runs if data is consistent 
                 if station.relative_water_level() > tol: #compares to tolerance 
                     station_level_tup = (station, station.relative_water_level()) #creates a tuple for the station
                     stations_over.append(station_level_tup) #adds tuple to list
