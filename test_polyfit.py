@@ -1,3 +1,5 @@
+"""Tests the polyfit function developed in the first part of task 2F"""
+
 from floodsystem.analysis import polyfit
 from datetime import datetime, timedelta
 import numpy as np
@@ -15,7 +17,7 @@ y = []
 for i in range(20):
     x = datetime(2022, 1, 20-i)
     dates.append(x)
-    point = poly_test(19 - i)           # make sure the y-values also go backwards!
+    point = poly_test(19 - i)           # makes sure the y-values also go backwards!
     y.append(point)
 
 # Confirms that polyfit retuns the input polynomial

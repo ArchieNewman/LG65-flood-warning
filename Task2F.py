@@ -1,3 +1,6 @@
+"""The demonstration program for 2F"""
+
+#Imports
 import numpy as np
 import matplotlib.pyplot as plt
 from floodsystem.plot import plot_water_levels_with_fit
