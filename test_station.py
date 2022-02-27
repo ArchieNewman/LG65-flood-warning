@@ -41,12 +41,12 @@ def test_relative_water_level():
         if station.typical_range_consistent() == False:
             assert station.relative_water_level() == None #this checks that inconsistent data returns None
 
-    s_id = "https://environment.data.gov.uk/flood-monitoring/id/stations/E8266" #creates a station (river ouse)
-    m_id = "https://environment.data.gov.uk/flood-monitoring/id/measures/E8266-level-stage-i-15_min-mASD" #assigns the measure id for river ouse
-    label = "Ardingly"
-    coord = (51.038451 ,-0.100268)
-    river = "River Ouse"
-    town = "Ardingly"
+    s_id = "http://environment.data.gov.uk/flood-monitoring/id/stations/1029TH"
+    m_id = "http://environment.data.gov.uk/flood-monitoring/id/measures/1029TH-level-stage-i-15_min-mASD"
+    label = "Bourton Dickler"
+    coord = (51.874767, -1.740083)
+    river = "River Dikler"
+    town = "Little Rissington"
     test_typical_range = (0, 10)
     test_station_list = [MonitoringStation(s_id, m_id, label, coord, test_typical_range, river, town)] #turns it intoo a monitoring station in the class
 
