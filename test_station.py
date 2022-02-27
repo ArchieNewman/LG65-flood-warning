@@ -5,6 +5,7 @@
 
 from floodsystem.station import MonitoringStation
 from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.station import inconsistent_typical_range_stations
 
 
 def test_create_monitoring_station():
@@ -57,6 +58,6 @@ def test_relative_water_level():
     assert test_station_list[0].relative_water_level() == 1 #runs the station through the relative water level function and checks that the ratio is 1
     test_station_list[0].typical_range = (known_latest_level, 10) #sets the station's min typical to known latest level
     assert test_station_list[0].relative_water_level() == 0 #runs station through function and checks ratio is 0
-    
+
 
 
