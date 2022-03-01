@@ -9,11 +9,10 @@ from floodsystem.analysis import polyfit, fit_latest_gradient
 import numpy as np
 
 #assessing flood risk for all the stations can be done by comparing the relative water level to the higher of the typical levels.
-# i have estimated the danger for a given relative water level to be;
-# I changed these slightly
+# We estimated the danger for a given relative water level to be;
 # Very_Low < 0.5 < Low < 0.9 < Moderate < 1.2 < High < 2.0 < Severe 
 # I've added something to tell if water levels at stations are increasing or decreasing
-# Also, all moderate stations with increasing risk are printed. 
+# Also, all moderate stations with increasing water levels are shown, as their risk level could soon increase. 
 
 stations = build_station_list() #builds list of stations
 update_water_levels(stations) #updates water levels
@@ -97,6 +96,7 @@ print("")
 # moderate list and their levels are increasing
 
 print("The towns with moderate, but increasing, risk of flooding are:")
+moderate_plus = []
 for i in moderate_list:
     dates, levels = fetch_measure_levels(i.measure_id, datetime.timedelta(days=2))
     gradient = fit_latest_gradient(dates, levels, 4)
@@ -105,3 +105,6 @@ for i in moderate_list:
             print(i.name)       # Some stations don't have towns, so instead the station names gets printed.
         else:
             print(i.town)
+
+        moderate_plus.append(i)     # Gives a useful list of these towns
+
