@@ -86,7 +86,7 @@ def plot_water_levels_with_fit(station, dates, levels, p):
     y_list = np.linspace(last_date, poly(0), len(dates))
 
     # plots the polynomial
-    plt.plot(dates, poly(y_list), label = "best-fit polynomial")
+    plt.plot(dates, poly(y_list), label = "Best-fit polynomial")
 
 
     # Add axis labels, rotate date labels and add plot title
