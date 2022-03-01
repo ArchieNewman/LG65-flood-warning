@@ -10,6 +10,9 @@ b = 1
 c = 3
 poly_test = np.poly1d([a, b, c])
 
+#dydx = poly_test.deriv()
+#print(dydx)
+
 
 # Makes lists of dates and y values from it, going backwards from January 1st 2022 (as the dates go backwards)
 dates = []
@@ -23,9 +26,9 @@ for i in range(20):
 # Confirms that polyfit retuns the input polynomial
 output_p, shift = polyfit(dates, y, 2)
 print(output_p)
-print(output_p[0])
-print(output_p[1])
-print(output_p[2])
+#print(output_p[0])
+#print(output_p[1])
+#print(output_p[2])
 
 # Checks that the values are the same to 5 dp
 assert round(output_p[2], 5) == a
