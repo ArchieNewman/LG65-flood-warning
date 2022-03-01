@@ -23,13 +23,13 @@ print("")
 if chosen_station == None:
     print("Station not found")
 
+else:
+    print("Please enter the number of days you'd like to view data for. This must be a positive number")
+    print("Some stations may not have any data if you enter a small number. If you get an error, try entering a larger number.")
+    stuff = input()
+    N = float(stuff)
 
-print("Please enter the number of days you'd like to view data for. This must be a positive number")
-print("Some stations may not have any data if you enter a small number. If you get an error, try entering a larger number.")
-stuff = input()
-N = float(stuff)
-
-new_name = chosen_station.measure_id
-dates, levels = fetch_measure_levels(new_name, datetime.timedelta(days=N))
-# And then uses my function to plot them
-plot_water_levels_with_fit(chosen_station, dates, levels, 4)
+    new_name = chosen_station.measure_id
+    dates, levels = fetch_measure_levels(new_name, datetime.timedelta(days=N))
+    # And then uses my function to plot them
+    plot_water_levels_with_fit(chosen_station, dates, levels, 4)
