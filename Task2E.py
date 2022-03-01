@@ -10,7 +10,10 @@ all_stations = build_station_list()
 
 # need to find which stations have the current relative highest water level
 # this is part of task 2C - so I will use the function from 2C to get a list of 5 the station objects needed.
-# For now, use the random-testing file to test this function.
+
+from floodsystem.stationdata import update_water_levels
+update_water_levels(all_stations)
+
 from floodsystem.flood import stations_highest_rel_level
 risky_stations = stations_highest_rel_level(all_stations, 5)
 

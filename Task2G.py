@@ -46,8 +46,10 @@ for station in stations : # Repeat for low risk
 #only necessary to print the severe and high risk towns
 print('The towns with severe risk of flooding are:')
 for i in severe_list:
-    print(i.town)
+    if i.town != None:          # Noticed that sometimes this would give "None" for some reason, so added this line to fix that
+        print(i.town)
 print('')
 print('The towns with high risk of flooding are:')
 for i in high_list:
-    print(i.town)
+    if i.town != None:
+        print(i.town)
