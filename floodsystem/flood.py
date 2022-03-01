@@ -9,7 +9,7 @@ def stations_level_over_threshold(stations, tol):
     station_level_tup = () #creates empty station - water level tuple
 
     for station in stations: #cycles through every station in the list of stations
-        if station.relative_water_level() != None: #wont run if no data
+        if station.relative_water_level() != None and station.relative_water_level() < 50: #won't run if no data or if weird data
             if station.typical_range[1] > station.typical_range[0]: #only runs if data is consistent 
                 if station.relative_water_level() > tol: #compares to tolerance 
                     station_level_tup = (station, station.relative_water_level()) #creates a tuple for the station
@@ -33,7 +33,8 @@ def stations_highest_rel_level(stations, N):
     N_highest_stations = [] #creates an empty list for the N stations with highest relative water level
 
     for station in stations: #cycles through each station
-        if station.relative_water_level() != None: #only applies if data is consistent (there is a relative water level)
+        if station.relative_water_level() != None and station.relative_water_level() < 50: #only applies if data is consistent (there is a relative water level)
+            # added a <50 to remove weird stations like Letcome Bassett
             station_level_tup = (station, station.relative_water_level()) #makes tuple with station and relative water level
             consistent_stations.append(station_level_tup) #adds tuple to the list
 
