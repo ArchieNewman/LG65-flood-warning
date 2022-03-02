@@ -108,4 +108,5 @@ for i in moderate_list:
 
         moderate_plus.append(i)     # Gives a useful list of these towns
 
+print("")
 print("To view the graph for a station of your choice, run python graph_plotter.py")

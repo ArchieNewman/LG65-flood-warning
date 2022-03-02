@@ -81,7 +81,7 @@ class MonitoringStation:
 
 #Task 1F, part 2:
 def inconsistent_typical_range_stations(stations):
-    """Applies typical_range_consistent to a list of station objects and returns an alphabetical list of the names of all stations
+    """Applies typical_range_consistent to a list of station objects and returns an alphabetical list of the NAMES of all stations
     which have inconsistent data"""
     
     # Creates empty list
@@ -100,5 +100,18 @@ def inconsistent_typical_range_stations(stations):
     return output_list
 
 
-        
+def consistent_typical_range_stations(stations):
+    """Applies typical_range_consistent to a list of station objects and returns a list of all station OBJECTS
+    which have consistent data"""
+    
+    # Creates empty list
+    output_list = []
 
+    # Iterates over stations to find all stations with inconsistent range data 
+    for i in range(len(stations)):
+        station_entry = stations[i]
+        if station_entry.typical_range_consistent() == True:
+            output_list.append(station_entry)
+
+
+    return output_list
